@@ -13,15 +13,15 @@ module.exports = function(app) {
         res.send(html);
     });
 
-    app.get('/yelp/:term/:location', (req, res) => {
-        var { term, location } = req.params;
-        yelp.transactionSearch('delivery', {
-            term,
+    app.get('/yelp/:location', (req, res) => {
+        var { location } = req.params;
+        yelp.transactionSearch('delivery', { 
             location
-        }).then((data) => {
+         }).then((data) => {
             res.send(data);
         }).catch((e) => {
             console.log(e);
         });
     });
+
 };
